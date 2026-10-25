@@ -24,7 +24,7 @@ public class ConsoleCleaner {
   /**
    * Método para limpiar la consola usando saltos de línea, este método se usa en lugares donde no existe
    * la consola como en el output del IDE, que utiliza `javaw`.
-   * @param lines
+   * @param lines Cantidad de líneas en blanco a imprimir.
    */
   private static void clearConsoleWithBlankLines(int lines) {
     for (int i = 0; i < lines; i++) {
@@ -35,8 +35,7 @@ public class ConsoleCleaner {
   /**
    * Utiliza los comandos nativos del sistema operativo para limpiar la consola, solo
    * funciona si el programa es ejecutado desde la terminal.
-   *
-   * Primero valida si el sistema operativo es Windows para ejecutar comandos específicos, para los demás
+   * Primero hace la verificación si el sistema operativo es Windows para ejecutar comandos específicos, para los demás
    * (basados en Unix) usa directamente `clear`.
    */
   private static void clearConsoleWithSystemCommands() {
