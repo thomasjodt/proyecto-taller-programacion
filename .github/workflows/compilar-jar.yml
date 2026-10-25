@@ -1,0 +1,45 @@
+name: Generar Release tras Merge en Main
+
+on:
+  push:
+    branches: [ "main" ] # Se dispara cuando se hace el merge final a main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      # 1. Descargar el código del repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # 2. Configurar el entorno de Java
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25' # <-- Recuerda cambiarlo por el de la universidad (ej. '8', '17')
+          distribution: 'temurin'
+
+      # 3. Compilar y generar el JAR usando Ant
+      - name: Ejecutar compilación con Ant
+        run: ant jar
+
+      # 4. Generar un Tag único basado en la fecha y hora actual (Formato: vYYYYMMDD-HHMMSS)
+      - name: Generar nombre de etiqueta (Tag)
+        id: tag_name
+        run: echo "tag=v$(date +'%Y%m%d-%H%M%S')" >> $GITHUB_OUTPUT
+
+      # 5. Crear la Release en GitHub y subir el archivo .jar
+      - name: Crear GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag_name.outputs.tag }}
+          name: Release ${{ steps.tag_name.outputs.tag }}
+          body: |
+            Compilación exitosa tras la fusión de cambios en la rama principal.
+            ¡El archivo JAR adjunto está listo para pruebas!
+          draft: false
+          prerelease: false
+          files: dist/*.jar
