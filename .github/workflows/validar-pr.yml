@@ -1,0 +1,23 @@
+name: Validar Compilación de PR (Ant)
+
+on:
+  pull_request:
+    branches: [ "develop" ] # Se ejecuta cuando abren un PR hacia develop
+
+jobs:
+  test-compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25' # <-- Ajusta a la versión de la universidad
+          distribution: 'temurin'
+
+      # Intenta compilar el proyecto. Si falla aquí, el PR se bloquea.
+      - name: Validar compilación con Ant
+        run: ant compile
