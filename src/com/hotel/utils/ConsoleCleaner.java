@@ -1,4 +1,4 @@
-package utils;
+package com.hotel.utils;
 
 public class ConsoleCleaner {
   public static void clean() {

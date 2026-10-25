@@ -1,4 +1,4 @@
-package utils;
+package com.hotel.utils;
 
 public class ConsoleWriter {
   private final int LENGTH;
