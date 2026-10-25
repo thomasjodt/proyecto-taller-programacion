@@ -1,8 +1,8 @@
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import utils.ConsoleWriter;
-import utils.Prompt;
+import com.hotel.utils.ConsoleWriter;
+import com.hotel.utils.Prompt;
 
 public class Main {
   public static void main(String[] args) {
