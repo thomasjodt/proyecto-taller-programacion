@@ -1,0 +1,10 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Build outputs
+build/
+dist/
+
+# Netbeans private/user-specific files
+nbproject/private/
