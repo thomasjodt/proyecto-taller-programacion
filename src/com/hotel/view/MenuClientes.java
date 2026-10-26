@@ -1,4 +1,4 @@
-package com.hotel.view.clientes;
+package com.hotel.view;
 
 import com.hotel.model.Cliente;
 import com.hotel.service.ClientService;

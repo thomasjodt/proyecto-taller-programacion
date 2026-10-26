@@ -3,7 +3,6 @@ package com.hotel.view;
 import com.hotel.utils.ConsoleCleaner;
 import com.hotel.utils.ConsoleWriter;
 import com.hotel.utils.Prompt;
-import com.hotel.view.clientes.MenuClientes;
 
 public class MenuPrincipal {
   private final Prompt prompt = new Prompt();
