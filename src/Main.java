@@ -2,31 +2,27 @@
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import com.hotel.utils.ConsoleWriter;
+import com.hotel.utils.DummyDataGenerator;
 import com.hotel.utils.Prompt;
+import com.hotel.view.MenuPrincipal;
 
 public class Main {
   public static void main(String[] args) {
-    ConsoleWriter writer = new ConsoleWriter(60);
-    Prompt prompt = new Prompt();
+    DummyDataGenerator.fillClients(); // Crea 10 clientes de prueba.
+    DummyDataGenerator.fillRooms(10, 10); // Crea 10 pisos con 10 habitaciones cada uno, las habitaciones 10 de cada piso son Suites.
+    DummyDataGenerator.fillReservations();
 
-    writer.printTitle("Hotel infinito", true);
-    writer.printContent("Elige una opción para continuar:");
-    writer.printContent("");
-    writer.printContent("1. Administrar habitaciones.");
-    writer.printContent("2. Administrar clientes.");
-    writer.printContent("3. Administrar reservas.");
-    writer.printContent("4. Créditos.");
-    writer.printContent("0. Salir.");
-    writer.printContent("");
-    writer.printLineBelow(true);
+      // Captura el valor de la longitud del array de argumentos, si no encuentra uno, usa por defecto 75.
+      int length = Arrays.stream(args)
+              .filter(arg -> arg.startsWith("--length="))
+              .map(arg -> arg.substring("--length=".length()))
+              .findFirst()
+              .map(Integer::parseInt)
+              .orElse(75);
 
-    String nombre = prompt.requestText("Escribe tus nombres y apellidos:");
-    String[] nombres = nombre.split(" ");
-    String iniciales = Arrays.stream(nombres)
-            .filter(n -> !n.isEmpty())
-            .map(n -> n.substring(0, 1))
-            .collect(Collectors.joining());
-
-    System.out.println("Tus iniciales son: " + iniciales.toUpperCase());
+      // Se establece el writer con la longitud obtenida.
+      ConsoleWriter.setWriter(length);
+      MenuPrincipal menu = new MenuPrincipal();
+      menu.showMenu();
   }
 }

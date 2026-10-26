@@ -29,10 +29,9 @@ public class Prompt {
   }
 
   public int requestInt(String message) {
-    String text = this.requestText(message);
-
     while (true) {
       try {
+        String text = this.requestText(message);
         return Integer.parseInt(text.trim());
       } catch (NumberFormatException e) {
         System.out.println("Dato no válido, vuelve a intentarlo.");
@@ -50,5 +49,10 @@ public class Prompt {
         System.out.println("Dato no válido, vuelve a intentarlo.");
       }
     }
+  }
+
+  public boolean requestConfirmation(String message) {
+    String text = this.requestText(message + " (y/n): ");
+    return text.equalsIgnoreCase("y") || text.equalsIgnoreCase("yes");
   }
 }
