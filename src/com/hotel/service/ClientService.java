@@ -27,7 +27,7 @@ public class ClientService {
   public Optional<Cliente> findClient(String name) {
     Cliente foundClient = null;
     for (Cliente client : this.service.clients) {
-      if (client.getFullname().toLowerCase().contains(name.toLowerCase())) {
+      if (client.getFullName().toLowerCase().contains(name.toLowerCase())) {
         foundClient = client;
         break;
       }
@@ -35,15 +35,13 @@ public class ClientService {
     return Optional.ofNullable(foundClient);
   }
 
-  public Optional<Cliente> updateClient(Cliente client) {
-    Optional<Cliente> o = this.findClient(client.getFullname());
+  public void updateClient(Cliente client) {
+    Optional<Cliente> o = this.findClient(client.getFullName());
 
     if (o.isPresent()) {
       int index = this.service.clients.indexOf(o.get());
       this.service.clients.set(index, client);
-      return Optional.of(client);
     }
-    return o;
   }
 
   public void deleteClient(Cliente client) {

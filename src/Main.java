@@ -9,14 +9,16 @@ import com.hotel.view.MenuPrincipal;
 public class Main {
   public static void main(String[] args) {
     DummyDataGenerator.fillClients(); // Crea 10 clientes de prueba.
+    DummyDataGenerator.fillRooms(10, 10); // Crea 10 pisos con 10 habitaciones cada uno, las habitaciones 10 de cada piso son Suites.
+    DummyDataGenerator.fillReservations();
 
-      // Captura el valor de la longitud del array de argumentos, si no encuentra uno, usa por defecto 60.
+      // Captura el valor de la longitud del array de argumentos, si no encuentra uno, usa por defecto 75.
       int length = Arrays.stream(args)
               .filter(arg -> arg.startsWith("--length="))
               .map(arg -> arg.substring("--length=".length()))
               .findFirst()
               .map(Integer::parseInt)
-              .orElse(60);
+              .orElse(75);
 
       // Se establece el writer con la longitud obtenida.
       ConsoleWriter.setWriter(length);

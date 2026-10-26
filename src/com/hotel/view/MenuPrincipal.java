@@ -3,7 +3,6 @@ package com.hotel.view;
 import com.hotel.utils.ConsoleCleaner;
 import com.hotel.utils.ConsoleWriter;
 import com.hotel.utils.Prompt;
-import com.hotel.view.clientes.MenuClientes;
 
 public class MenuPrincipal {
   private final Prompt prompt = new Prompt();
@@ -11,6 +10,7 @@ public class MenuPrincipal {
 
   private final Credits credits = new Credits();
   private final MenuClientes menuClientes = new MenuClientes();
+  private final MenuHabitaciones menuHabitaciones = new MenuHabitaciones();
 
   /**
    * El método principal, que es el que se encarga de mostrar el menú principal y gestionar las opciones seleccionadas por el usuario.
@@ -27,9 +27,14 @@ public class MenuPrincipal {
       // Luego se vuelve a limpiar la consola para que no quede nada de la opción anterior, a excepción de algunos casos.
       // Los casos que no siguen el mismo patrón son `0` para salir y `default` que muestra un mensaje y espera confirmación.
       switch (option) {
+        case 1:
+          ConsoleCleaner.clean();
+          this.menuHabitaciones.showMenu();
+          ConsoleCleaner.clean();
+          break;
         case 2:
           ConsoleCleaner.clean();
-          menuClientes.showMenu();
+          this.menuClientes.showMenu();
           ConsoleCleaner.clean();
           break;
         case 4:
@@ -39,13 +44,13 @@ public class MenuPrincipal {
           break;
         case 0:
           ConsoleCleaner.clean();
-          writer.printTitle("Gracias por usar el sistema, finalizando.");
-          prompt.waitForEnter();
+          this.writer.printTitle("Gracias por usar el sistema, finalizando.");
+          this.prompt.waitForEnter();
           return;
         default:
           ConsoleCleaner.clean();
           System.out.println("Opción no válida, elige una opción disponible en la lista.");
-          prompt.waitForEnter();
+          this.prompt.waitForEnter();
           break;
       }
     }
@@ -53,16 +58,16 @@ public class MenuPrincipal {
 
   private void printMenu() {
     ConsoleCleaner.clean();
-    writer.printTitle("Hotel infinito");
-    writer.printTopLine();
-    writer.printContent("Elige una opción para continuar:");
-    writer.printContent("");
-    writer.printContent("1. Administrar habitaciones.");
-    writer.printContent("2. Administrar clientes.");
-    writer.printContent("3. Administrar reservas.");
-    writer.printContent("4. Créditos.");
-    writer.printContent("");
-    writer.printContent("0. Salir.");
-    writer.printLineBelow(true);
+    this.writer.printTitle("Hotel infinito");
+    this.writer.printTopLine();
+    this.writer.printContent("Elige una opción para continuar:");
+    this.writer.printContent("");
+    this.writer.printContent("1. Administrar habitaciones.");
+    this.writer.printContent("2. Administrar clientes.");
+    this.writer.printContent("3. Administrar reservas.");
+    this.writer.printContent("4. Créditos.");
+    this.writer.printContent("");
+    this.writer.printContent("0. Salir.");
+    this.writer.printLineBelow(true);
   }
 }
