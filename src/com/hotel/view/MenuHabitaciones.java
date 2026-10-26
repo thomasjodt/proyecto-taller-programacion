@@ -75,9 +75,11 @@ public class MenuHabitaciones {
 
     if (o.isPresent()) {
       Habitacion room = o.get();
+      this.writer.printTopLine();
       this.writer.printContent("Habitación encontrada:");
       this.writer.printContent("ID: " + room.getRoomID());
       this.writer.printContent("Disponible: " + room.isAvailable());
+      this.writer.printLineBelow(true);
     }
     else {
       ConsoleCleaner.clean();
@@ -94,7 +96,8 @@ public class MenuHabitaciones {
       : this.service.getAllRooms();
 
     StringBuilder builder = new StringBuilder();
-    this.writer.printTitle("Habitaciones disponibles", false);
+    String title = onlyAvailable ? "Habitaciones disponibles" : "Todas las habitaciones";
+    this.writer.printTitle(title, false);
     this.writer.printTopLine();
     for (int i = rooms.size() - 1; i >= 0; i--) {
       Habitacion room = this.service.getRoom(i);
