@@ -7,9 +7,9 @@ import com.hotel.model.Reserva;
 import java.util.ArrayList;
 
 public class HotelService {
-  public ArrayList<Cliente> clients;
-  public ArrayList<Reserva> reservas;
-  public ArrayList<Habitacion> habitaciones;
+  public ArrayList<Cliente> clients = new ArrayList<>();
+  public ArrayList<Reserva> reservas = new ArrayList<>();
+  public ArrayList<Habitacion> habitaciones = new ArrayList<>();
 
   private static HotelService instance;
 
