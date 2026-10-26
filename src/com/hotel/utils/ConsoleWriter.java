@@ -8,11 +8,14 @@ public class ConsoleWriter {
   }
 
   public static ConsoleWriter writer;
-  public static ConsoleWriter getWriter(int length) {
+
+  public static ConsoleWriter getWriter() {
+    return writer;
+  }
+  public static void setWriter(int length) {
       if (writer == null) {
           writer = new ConsoleWriter(length);
       }
-    return writer;
   }
 
   public void printTopLine() {

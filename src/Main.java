@@ -15,8 +15,8 @@ public class Main {
               .map(Integer::parseInt)
               .orElse(60);
 
-      // No se necesita el writer aquí, pero se llama al método estático para inicializar el writer con la longitud obtenida.
-      ConsoleWriter.getWriter(length);
+      // Se establece el writer con la longitud obtenida.
+      ConsoleWriter.setWriter(length);
       MenuPrincipal menu = new MenuPrincipal();
       menu.showMenu();
   }
