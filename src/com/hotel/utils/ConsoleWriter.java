@@ -3,8 +3,16 @@ package com.hotel.utils;
 public class ConsoleWriter {
   private final int LENGTH;
 
-  public ConsoleWriter(int length) {
+  private ConsoleWriter(int length) {
     this.LENGTH = length;
+  }
+
+  public static ConsoleWriter writer;
+  public static ConsoleWriter getWriter(int length) {
+      if (writer == null) {
+          writer = new ConsoleWriter(length);
+      }
+    return writer;
   }
 
   public void printTopLine() {

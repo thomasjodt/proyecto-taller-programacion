@@ -3,30 +3,21 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import com.hotel.utils.ConsoleWriter;
 import com.hotel.utils.Prompt;
+import com.hotel.view.MenuPrincipal;
 
 public class Main {
   public static void main(String[] args) {
-    ConsoleWriter writer = new ConsoleWriter(60);
-    Prompt prompt = new Prompt();
+      // Captura el valor de la longitud del array de argumentos, si no encuentra uno, usa por defecto 60.
+      int length = Arrays.stream(args)
+              .filter(arg -> arg.startsWith("--length="))
+              .map(arg -> arg.substring("--length=".length()))
+              .findFirst()
+              .map(Integer::parseInt)
+              .orElse(60);
 
-    writer.printTitle("Hotel infinito", true);
-    writer.printContent("Elige una opción para continuar:");
-    writer.printContent("");
-    writer.printContent("1. Administrar habitaciones.");
-    writer.printContent("2. Administrar clientes.");
-    writer.printContent("3. Administrar reservas.");
-    writer.printContent("4. Créditos.");
-    writer.printContent("0. Salir.");
-    writer.printContent("");
-    writer.printLineBelow(true);
-
-    String nombre = prompt.requestText("Escribe tus nombres y apellidos:");
-    String[] nombres = nombre.split(" ");
-    String iniciales = Arrays.stream(nombres)
-            .filter(n -> !n.isEmpty())
-            .map(n -> n.substring(0, 1))
-            .collect(Collectors.joining());
-
-    System.out.println("Tus iniciales son: " + iniciales.toUpperCase());
+      // No se necesita el writer aquí, pero se llama al método estático para inicializar el writer con la longitud obtenida.
+      ConsoleWriter.getWriter(length);
+      MenuPrincipal menu = new MenuPrincipal();
+      menu.showMenu();
   }
 }
