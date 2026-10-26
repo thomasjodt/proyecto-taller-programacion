@@ -5,6 +5,7 @@
 # Build outputs
 build/
 dist/
+out/
 
 # Netbeans private/user-specific files
 nbproject/private/
