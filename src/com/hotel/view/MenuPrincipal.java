@@ -10,11 +10,20 @@ public class MenuPrincipal {
 
   private final Credits credits = new Credits();
 
+  /**
+   * El método principal, que es el que se encarga de mostrar el menú principal y gestionar las opciones seleccionadas por el usuario.
+   * Debe ser un bucle infinito que muestra el menú principal y espera a que el usuario seleccione una opción.
+   * No hay problema con tener `while(true)` porque se espera que se muestre siempre y el único caso para salir del bucle es `0`, el
+   * cual hace que se finalice el programa.
+   */
   public void showMenu() {
     while (true) {
       this.printMenu();
       int option = prompt.requestInt("Elige una opción: ");
 
+      // En cada caso se limpia la consola y se muestra el menú de la opción seleccionada.
+      // Luego se vuelve a limpiar la consola para que no quede nada de la opción anterior, a excepción de algunos casos.
+      // Los casos que no siguen el mismo patrón son `0` para salir y `default` que muestra un mensaje y espera confirmación.
       switch (option) {
         case 4:
           ConsoleCleaner.clean();
