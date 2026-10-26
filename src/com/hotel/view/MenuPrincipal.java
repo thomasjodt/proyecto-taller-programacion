@@ -3,11 +3,7 @@ package com.hotel.view;
 import com.hotel.utils.ConsoleWriter;
 
 public class MenuPrincipal {
-  private final ConsoleWriter writer;
-
-  public MenuPrincipal() {
-      this.writer = ConsoleWriter.getWriter();
-  }
+  private final ConsoleWriter writer = ConsoleWriter.getWriter();
 
   public void showMenu() {
     writer.printTitle("Hotel infinito", true);
