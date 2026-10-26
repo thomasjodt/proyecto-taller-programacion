@@ -20,18 +20,18 @@ public class ConsoleWriter {
 
   public void printTopLine() {
     int length = this.LENGTH - 2;
-    String lineswithoutCorners = "═".repeat(length);
-    System.out.println('╔' + lineswithoutCorners + '╗');
+    String linesWithoutCorners = "═".repeat(length);
+    System.out.println('╔' + linesWithoutCorners + '╗');
   }
 
   public void printLineBelow(boolean isLast) {
     int length = this.LENGTH - 2;
-    String lineswithoutCorners = "═".repeat(length);
+    String linesWithoutCorners = "═".repeat(length);
 
     char leftBottomCorner = (!isLast) ? '╠' : '╚';
     char rightBottomCorner = (!isLast) ? '╣' : '╝';
 
-    System.out.println(leftBottomCorner + lineswithoutCorners + rightBottomCorner);
+    System.out.println(leftBottomCorner + linesWithoutCorners + rightBottomCorner);
   }
 
   public void printContent(String content) {
@@ -45,13 +45,15 @@ public class ConsoleWriter {
 
     if (isCentered) {
       int leftPadding = (length + content.length()) / 2;
-      formatted = String.format("%" + leftPadding + "s", content);
+      String format = "%" + leftPadding + "s";
+      formatted = String.format(format, content);
     }
     else {
       formatted = " " + content;
     }
 
-    System.out.printf("║%-" + length + "s║%n", formatted);
+    String format = "║%-" + length + "s║%n";
+    System.out.printf(format, formatted);
   }
 
   public void printTitle(String title, boolean isOpenBelow) {
