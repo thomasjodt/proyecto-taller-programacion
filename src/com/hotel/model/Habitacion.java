@@ -14,7 +14,9 @@ public abstract class Habitacion {
   }
 
   public String getRoomID() {
-    return Integer.toString(floor) + number;
+    String paddedFloor = String.format("%02d", floor);
+    String paddedNumber = String.format("%02d", number);
+    return paddedFloor + paddedNumber;
   }
 
   public int getFloor() {
