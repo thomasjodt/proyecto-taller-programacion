@@ -6,17 +6,17 @@ public class Cliente {
   private String names;
   private String lastNames;
   private String email;
-  private String room;
   private UUID id;
 
-  public Cliente() {}
+  public Cliente() {
+    this.id = UUID.randomUUID();
+  }
 
-  public Cliente(String names, String lastNames, String email, String room, UUID id) {
+  public Cliente(String names, String lastNames, String email) {
     this.names = names;
     this.lastNames = lastNames;
     this.email = email;
-    this.room = room;
-    this.id = id;
+    this.id = UUID.randomUUID();
   }
 
   public String getNames() {
@@ -35,7 +35,7 @@ public class Cliente {
     this.lastNames = lastNames;
   }
 
-  public String getFullname() {
+  public String getFullName() {
     return this.names + " " + this.lastNames;
   }
 
@@ -45,14 +45,6 @@ public class Cliente {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public String getRoom() {
-    return this.room;
-  }
-
-  public void setRoom(String room) {
-    this.room = room;
   }
 
   public UUID getId() {

@@ -79,7 +79,7 @@ public class MenuClientes {
 
     for (int i = 0; i < clients.size(); i++) {
       Cliente client = clients.get(i);
-      writer.printContent((i + 1) + ". " + client.getFullname());
+      writer.printContent((i + 1) + ". " + client.getFullName());
     }
 
     writer.printLineBelow(true);
@@ -112,7 +112,7 @@ public class MenuClientes {
     client.ifPresentOrElse(c -> {
       writer.printTopLine();
       writer.printContent("Cliente encontrado:");
-      writer.printContent(c.getFullname());
+      writer.printContent(c.getFullName());
       writer.printLineBelow(true);
     }, () -> writer.printTitle("Cliente no encontrado"));
 
@@ -136,16 +136,14 @@ public class MenuClientes {
     String nombre = prompt.requestText("Ingrese el nuevo nombre del cliente (vacío para mantener):");
     String apellido = prompt.requestText("Ingrese el nuevo apellido del cliente (vacío para mantener):");
     String email = prompt.requestText("Ingrese el nuevo email del cliente (vacío para mantener):");
-    String room = prompt.requestText("Ingrese el nuevo número de habitación del cliente (vacío para mantener):");
 
     cliente.setNames(!nombre.isEmpty() ? nombre : cliente.getNames());
     cliente.setLastnames(!apellido.isEmpty() ? apellido : cliente.getLastnames());
     cliente.setEmail(!email.isEmpty() ? email : cliente.getEmail());
-    cliente.setRoom(!room.isEmpty() ? room : cliente.getRoom());
 
     ConsoleCleaner.clean();
 
-    boolean isSomePropertyUpdated = !nombre.isEmpty() || !apellido.isEmpty() || !email.isEmpty() || !room.isEmpty();
+    boolean isSomePropertyUpdated = !nombre.isEmpty() || !apellido.isEmpty() || !email.isEmpty();
 
     writer.printTitle("Cliente actualizado exitosamente.", isSomePropertyUpdated);
     if (!nombre.isEmpty()) {
@@ -158,10 +156,6 @@ public class MenuClientes {
 
     if (!email.isEmpty()) {
       writer.printContent("Email: " + email);
-    }
-
-    if (!room.isEmpty()) {
-      writer.printContent("Habitación: " + room);
     }
 
     if (isSomePropertyUpdated) {
@@ -185,7 +179,7 @@ public class MenuClientes {
     }
 
     Cliente c = client.get();
-    writer.printTitle("Cliente: " + c.getFullname());
+    writer.printTitle("Cliente: " + c.getFullName());
     boolean isConfirmed = prompt.requestConfirmation("¿Está seguro de que desea eliminar al cliente?");
 
     if (!isConfirmed) {
