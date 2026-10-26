@@ -3,12 +3,14 @@ package com.hotel.view;
 import com.hotel.utils.ConsoleCleaner;
 import com.hotel.utils.ConsoleWriter;
 import com.hotel.utils.Prompt;
+import com.hotel.view.clientes.MenuClientes;
 
 public class MenuPrincipal {
   private final Prompt prompt = new Prompt();
   private final ConsoleWriter writer = ConsoleWriter.getWriter();
 
   private final Credits credits = new Credits();
+  private final MenuClientes menuClientes = new MenuClientes();
 
   /**
    * El método principal, que es el que se encarga de mostrar el menú principal y gestionar las opciones seleccionadas por el usuario.
@@ -25,6 +27,11 @@ public class MenuPrincipal {
       // Luego se vuelve a limpiar la consola para que no quede nada de la opción anterior, a excepción de algunos casos.
       // Los casos que no siguen el mismo patrón son `0` para salir y `default` que muestra un mensaje y espera confirmación.
       switch (option) {
+        case 2:
+          ConsoleCleaner.clean();
+          menuClientes.showMenu();
+          ConsoleCleaner.clean();
+          break;
         case 4:
           ConsoleCleaner.clean();
           this.credits.showCredits();
