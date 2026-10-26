@@ -10,6 +10,7 @@ public class Main {
   public static void main(String[] args) {
     DummyDataGenerator.fillClients(); // Crea 10 clientes de prueba.
     DummyDataGenerator.fillRooms(10, 10); // Crea 10 pisos con 10 habitaciones cada uno, las habitaciones 10 de cada piso son Suites.
+    DummyDataGenerator.fillReservations();
 
       // Captura el valor de la longitud del array de argumentos, si no encuentra uno, usa por defecto 75.
       int length = Arrays.stream(args)

@@ -37,4 +37,7 @@ public class DummyDataGenerator {
       }
     }
   }
+
+  // TODO: Implementar método cuando esté listo el módulo de reservaciones.
+  public static void fillReservations() {}
 }
