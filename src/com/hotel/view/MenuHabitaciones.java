@@ -73,16 +73,18 @@ public class MenuHabitaciones {
     String id = this.prompt.requestText("Ingrese el ID de la habitación:");
     Optional<Habitacion> o = this.service.findByRoomID(id);
 
+    ConsoleCleaner.clean();
     if (o.isPresent()) {
       Habitacion room = o.get();
       this.writer.printTopLine();
-      this.writer.printContent("Habitación encontrada:");
-      this.writer.printContent("ID: " + room.getRoomID());
-      this.writer.printContent("Disponible: " + room.isAvailable());
+      this.writer.printContent("Habitación encontrada: " + room.getRoomID());
+      this.writer.printLineBelow(false);
+      this.writer.printContent("Piso: " + room.getFloor());
+      this.writer.printContent("Número: " + room.getNumber());
+      this.writer.printContent("Estado: " + (room.isAvailable() ? "Disponible" : "Ocupada"));
       this.writer.printLineBelow(true);
     }
     else {
-      ConsoleCleaner.clean();
       this.writer.printTitle("Habitación no encontrada.");
     }
 
